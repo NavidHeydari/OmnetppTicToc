@@ -1,0 +1,118 @@
+E # 0 t 0 m 1 ce -1 msg -1
+SB v 1285 rid tictoc6-0-20191111-11:20:21-9052 b 1000
+KF p -1 c "" s ""
+MC id 1 c omnetpp::cModule t tictoc6 n tictoc6 cm 1
+MS id 1 d ""
+MC id 2 c Txc6 t Tic6 pid 1 n tic
+GC m 2 g 0 n in o 0
+GC m 2 g 3 n out o 1
+MS id 2 d i=block/routing,cyan
+MC id 3 c Txc6 t Toc6 pid 1 n toc
+GC m 3 g 0 n in o 0
+GC m 3 g 3 n out o 1
+MS id 3 d i=block/routing,gold
+CC sm 2 sg 3 dm 3 dg 0
+CS sm 2 sg 3 d ""
+CC sm 3 sg 3 dm 2 dg 0
+CS sm 3 sg 3 d ""
+MB sm 1 tm 2 m initialize(0)
+CM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe -1
+- INFO (Tic6)tictoc6.tic: Scheduling first send to t=5.0s
+CM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe -1
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 0
+ES t 5
+ME
+MB sm 1 tm 3 m initialize(0)
+CM id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n event pe -1
+ME
+
+E # 1 t 5 m 2 ce 0 msg 0
+- INFO (Tic6)tictoc6.tic: Wait period is over, sending back message
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 0
+SH sm 2 sg 3 pd 0.1
+ES t 5.1
+CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 1 cid 3
+
+E # 2 t 5.1 m 3 ce 1 msg 1
+- INFO (Toc6)tictoc6.toc: Message arrived, starting to wait 1 sec...
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n event pe 0
+ES t 6.1
+
+E # 3 t 6.1 m 3 ce 2 msg 2
+- INFO (Toc6)tictoc6.toc: Wait period is over, sending back message
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 2
+SH sm 3 sg 3 pd 0.1
+ES t 6.2
+CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 3 cid 4
+
+E # 4 t 6.2 m 2 ce 3 msg 1
+- INFO (Tic6)tictoc6.tic: Message arrived, starting to wait 1 sec...
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 1
+ES t 7.2
+
+E # 5 t 7.2 m 2 ce 4 msg 0
+- INFO (Tic6)tictoc6.tic: Wait period is over, sending back message
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 4
+SH sm 2 sg 3 pd 0.1
+ES t 7.3
+CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 5 cid 5
+
+E # 6 t 7.3 m 3 ce 5 msg 1
+- INFO (Toc6)tictoc6.toc: Message arrived, starting to wait 1 sec...
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n event pe 3
+ES t 8.3
+
+E # 7 t 8.3 m 3 ce 6 msg 2
+- INFO (Toc6)tictoc6.toc: Wait period is over, sending back message
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 6
+SH sm 3 sg 3 pd 0.1
+ES t 8.4
+CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 7 cid 6
+
+E # 8 t 8.4 m 2 ce 7 msg 1
+- INFO (Tic6)tictoc6.tic: Message arrived, starting to wait 1 sec...
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 5
+ES t 9.4
+
+E # 9 t 9.4 m 2 ce 8 msg 0
+- INFO (Tic6)tictoc6.tic: Wait period is over, sending back message
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 8
+SH sm 2 sg 3 pd 0.1
+ES t 9.5
+CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 9 cid 7
+
+E # 10 t 9.5 m 3 ce 9 msg 1
+- INFO (Toc6)tictoc6.toc: Message arrived, starting to wait 1 sec...
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n event pe 7
+ES t 10.5
+
+E # 11 t 10.5 m 3 ce 10 msg 2
+- INFO (Toc6)tictoc6.toc: Wait period is over, sending back message
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 10
+SH sm 3 sg 3 pd 0.1
+ES t 10.6
+CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 11 cid 8
+
+E # 12 t 10.6 m 2 ce 11 msg 1
+- INFO (Tic6)tictoc6.tic: Message arrived, starting to wait 1 sec...
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n event pe 9
+ES t 11.6
+
+E # 13 t 11.6 m 2 ce 12 msg 0
+- INFO (Tic6)tictoc6.tic: Wait period is over, sending back message
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 12
+SH sm 2 sg 3 pd 0.1
+ES t 11.7
+CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 13 cid 9
+
+E # 14 t 11.7 m 3 ce 13 msg 1
+- INFO (Toc6)tictoc6.toc: Message arrived, starting to wait 1 sec...
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n event pe 11
+ES t 12.7
+
+E # 15 t 12.7 m 3 ce 14 msg 2
+- INFO (Toc6)tictoc6.toc: Wait period is over, sending back message
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 14
+SH sm 3 sg 3 pd 0.1
+ES t 12.8
+CL id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n tictocMsg pe 15 cid 10
